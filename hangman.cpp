@@ -3,9 +3,10 @@
 #include <vector>
 #include <string>
 #include <stdlib.h>
-#include <time.h>
+#include <ctime.>
 #include <set>
 #include <array>
+#include <unistd.h>
 
 using namespace std;
 
@@ -139,6 +140,7 @@ int main()
          << endl
          << "YOU WIN!" << endl;
     cout << "The word was " << word << endl;
+    sleep(10);
   }
   else
   {
@@ -147,6 +149,7 @@ int main()
          << endl
          << "YOU WERE HANGED!" << endl;
     cout << "The word was " << word << endl;
+    sleep(10);
   }
 
   return 0;
