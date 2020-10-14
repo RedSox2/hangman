@@ -8,6 +8,8 @@ A hangman game.
 
 How to run
 ---------------------
+
+
 ### Windows
 1. Install [min-GW](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download).  
 2. Open the installer and continue through it but choose x86_64 for architecture.
@@ -17,8 +19,8 @@ How to run
 6. A new window should pop up. Choose `new`. Copy and paste this: `C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin`. 
 7. Your all good! Feel free to run your program whenever you feel. 
 
-Mac
---------------------
+### Mac
+
 1. Download the zip.
 2. Go to finder and `downloads`.
 3. Double click on the hangman-master folder.
