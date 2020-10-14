@@ -1,11 +1,13 @@
-# hangman
+ hangman
+ =============
 A hangman game.
 
 | hangman.exe | hangman |
 | ----------- | ------- |
 |WIN executable | mac executable |
 
-## How to run
+How to run
+---------------------
 ### Windows
 1. Install [min-GW](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download)  
 2. Open the installer and continue through it but choose x86_64 for architecture.
