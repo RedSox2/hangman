@@ -15,4 +15,4 @@ How to run
 6. Click the `Path` variable under **account variables**. 
 79. Click `edit`.
 324. A new window should pop up. Choose `new`. Copy and paste this: `C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin`. 
-2164190484. Your all good! Feel free to run your program whenever you feel. 
+12341. Your all good! Feel free to run your program whenever you feel. 
