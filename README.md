@@ -27,4 +27,4 @@ Mac
 6. Into terminal type `cd downloads/hangman-master`.
 7. Then type `make hangman`. This opens a new window asking you to install something to allow this to run, click `yes`.
 8. Once that is installed type `make hangman` and press enter.
-9. Finally, into terminal type `./hamgan`. (Or go to finder and open downloads and hangman-master and double-click hangman)
+9. Finally, into terminal type `./hangman`. (Or go to finder and open downloads and hangman-master and double-click hangman)
