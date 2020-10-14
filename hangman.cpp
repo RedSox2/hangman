@@ -1,8 +1,11 @@
 #include <iostream>
 #include <sstream>
+#include <auto.h>
+#include <fstream>
 #include <vector>
 #include <string>
 #include <stdlib.h>
+#include <ctime.>
 #include <set>
 #include <array>
 #include <unistd.h>
@@ -12,18 +15,20 @@ using namespace std;
 // MAIN Function
 int main()
 {
-  string fiveLetter[26] = {"abode"};
-  string fourLetter[26] = {};
-  string sixLetter[26] = {};
-  string sevenLetter[26] = {};
+  string pickWords[15] = {"ADOBE", "BLIZZARD", "CYCLE", "QUIZZES", "PUPPY", "LUCKY", "OBVIOUS", "SPINX", "VORTEX", "ZIGZAG", "FJORD", "GLOWWORM", "PHLEGM", "UNZIP", "SUBWAY"};
+  
   string myGuess;
 
   int wordPick;
   int length;
   string word;
-  string guessedWord;
+  int n;
   int guesses = 15;
+  int incrtGuesses = 0;
   auto guessed = array<bool, 26>();
+  time_t myTime = time(0);
+  char* dateTime = ctime(&now);
+  fstream highScores;
 
   // srand(time(NULL));
   // cout << "What length would you like the word to be? ";
@@ -48,9 +53,15 @@ int main()
   //     break;
 
   // }
+  srand(time(NULL));
+  wordPick = rand() % 15;
+  
 
-  word = "OBVIOUS";
-  guessedWord = "_______";
+
+  word = pickWords[wordPick];
+  n = word.length();
+  string guessedWord (n, 95);
+  
 
   cout << endl
        << endl
@@ -127,6 +138,7 @@ int main()
       {
         cout << "Incorrect, \'" << guess << "\' is not in the word." << endl;
         guesses--;
+        incrtGuesses++;
       }
       cout << "-----------------------------------------------------" << endl;
     }
@@ -139,6 +151,17 @@ int main()
          << endl
          << "YOU WIN!" << endl;
     cout << "The word was " << word << endl;
+    cout << "You took "<< incrtGuesses << " incorrect guesses." << endl;
+    highScores.open("highscores.txt");
+    string urName;
+    cin >> urName;
+    while (highScores)
+    {
+      highScores << "By: " << urName << endl;
+      highScores << "Date: " << dateTime << endl;
+      highScores << "Score: " << incrtGuesses << endl;
+    }
+
     sleep(10);
   }
   else
