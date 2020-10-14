@@ -154,12 +154,10 @@ int main()
     highScores.open("highscores.txt");
     string urName;
     cin >> urName;
-    while (highScores)
-    {
-      highScores << "By: " << urName << endl;
-      highScores << "Date: " << dateTime << endl;
-      highScores << "Score: " << incrtGuesses << endl;
-    }
+    highScores << "By: " << urName << endl;
+    highScores << "Date: " << dateTime << endl;
+    highScores << "Score: " << incrtGuesses << endl;
+    
 
     sleep(10);
   }
