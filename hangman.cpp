@@ -1,11 +1,10 @@
 #include <iostream>
 #include <sstream>
-#include <auto.h>
 #include <fstream>
 #include <vector>
 #include <string>
 #include <stdlib.h>
-#include <ctime.>
+#include <ctime>
 #include <set>
 #include <array>
 #include <unistd.h>
@@ -27,7 +26,7 @@ int main()
   int incrtGuesses = 0;
   auto guessed = array<bool, 26>();
   time_t myTime = time(0);
-  char* dateTime = ctime(&now);
+  char* dateTime = ctime(&myTime);
   fstream highScores;
 
   // srand(time(NULL));
