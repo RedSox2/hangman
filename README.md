@@ -26,7 +26,7 @@ How to run
 3. Double click on the hangman-master folder.
 4. Press cmd+spacebar.
 5. type in `terminal` and press enter.
-6. Into terminal type `cd downloads/hangman-master`.
+6. Into terminal type `cd downloads/hangman-master`, then press enter. 
 7. Then type `make hangman`. This opens a new window asking you to install something to allow this to run, click `yes`.
 8. Once that is installed type `make hangman` and press enter.
 9. Finally, into terminal type `./hangman`. (Or go to finder and open downloads and hangman-master and double-click hangman)
