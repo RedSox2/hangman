@@ -151,15 +151,15 @@ int main()
          << "YOU WIN!" << endl;
     cout << "The word was " << word << endl;
     cout << "You took "<< incrtGuesses << " incorrect guesses." << endl;
-    // highScores.open("highscores.txt");
-    // string urName;
-    // cin >> urName;
-    // while (highScores)
-    // {
-    //   highScores << "By: " << urName << endl;
-    //   highScores << "Date: " << dateTime << endl;
-    //   highScores << "Score: " << incrtGuesses << endl;
-    // }
+    highScores.open("highscores.txt");
+    string urName;
+    cin >> urName;
+    while (highScores)
+    {
+      highScores << "By: " << urName << endl;
+      highScores << "Date: " << dateTime << endl;
+      highScores << "Score: " << incrtGuesses << endl;
+    }
 
     sleep(10);
   }
