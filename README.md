@@ -15,7 +15,7 @@ How to run
 5. Click `edit`.
 6. A new window should pop up. Choose `new`. Copy and paste this: `C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin`.
 7. Make sure to download the project (click the green code button and choose download ZIP)
-7. Your all good! Feel free to run your program whenever you feel. 
+7. Open File Explorer and go to downloads and the hangman-master folder. Extract it and then double click the .exe file (hangman.exe). Then it will start! 
 
 ### Mac
 
