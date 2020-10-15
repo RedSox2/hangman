@@ -4,17 +4,18 @@
 #include <vector>
 #include <string>
 #include <stdlib.h>
-#include <ctime>
+#include <ctime.>
 #include <set>
 #include <array>
 #include <unistd.h>
 
 using namespace std;
+string readLine(const string& filename, int N);
 
 // MAIN Function
 int main()
 {
-  string pickWords[15] = {"ADOBE", "BLIZZARD", "CYCLE", "QUIZZES", "PUPPY", "LUCKY", "OBVIOUS", "SPINX", "VORTEX", "ZIGZAG", "FJORD", "GLOWWORM", "PHLEGM", "UNZIP", "SUBWAY"};
+  string pickWords[15] = {"ADOBE", "BLIZZARD", "CYCLE", "QUIZZES", "PUPPY", "LUCKY", "OBVIOUS", "SPHINX", "VORTEX", "ZIGZAG", "FJORD", "GLOWWORM", "PHLEGM", "UNZIP", "SUBWAY"};
   
   string myGuess;
 
@@ -27,7 +28,10 @@ int main()
   auto guessed = array<bool, 26>();
   time_t myTime = time(0);
   char* dateTime = ctime(&myTime);
-  fstream highScores;
+  ofstream highScores;
+  string urName;
+  string displayStr;
+  ifstream highScoresDisplay;
 
   // srand(time(NULL));
   // cout << "What length would you like the word to be? ";
@@ -69,7 +73,7 @@ int main()
   cout << endl
        << "----------------------------------------------------------------------------------------------------------" << endl
        << endl;
-  cout << "Here are the rules:\n* you must enter one letter\n* that letter cannot be a symbol\n* you have ten guesses\n* correct guesses won't count against you\n* you cannot guess the same letter twice\n* and finally, if you need to give up enter any numeral" << endl
+  cout << "Here are the rules:\n* you must enter one letter\n* that letter cannot be a symbol\n* you have ten guesses\n* correct guesses won't count against you\n* you cannot guess the same letter twice\n* and finally, if you need to give up enter any numeral\n* P.S. lower scores are better since you score is equal to the number of incorrect guesses you got" << endl
        << endl
        << endl
        << endl;
@@ -151,12 +155,33 @@ int main()
          << "YOU WIN!" << endl;
     cout << "The word was " << word << endl;
     cout << "You took "<< incrtGuesses << " incorrect guesses." << endl;
-    highScores.open("highscores.txt");
-    string urName;
-    cin >> urName;
-    highScores << "By: " << urName << endl;
-    highScores << "Date: " << dateTime << endl;
-    highScores << "Score: " << incrtGuesses << endl;
+    if (incrtGuesses < stoi(readLine("highscores.txt", 4)))
+    {
+      cout << "Yay, You got a high score!" << endl;
+      cout << "Please enter your name here: ";
+      cin >> urName;
+      highScores.open("highscores.txt");
+      highScores << "By: " << urName << endl;
+      highScores << "Date: " << dateTime;
+      highScores << "\bScore: " << endl;
+      highScores << incrtGuesses;
+      highScores.close();
+    }
+    cout << "The current high score is: " << endl;
+
+    highScoresDisplay.open("highscores.txt", ios::in);
+    if (highScoresDisplay.is_open()) 
+    {
+      while (getline(highScoresDisplay, displayStr))
+      {
+        cout << displayStr << endl;
+      }
+      highScores.close();
+    }
+    
+    
+
+    
     
 
     sleep(10);
@@ -168,8 +193,36 @@ int main()
          << endl
          << "YOU WERE HANGED!" << endl;
     cout << "The word was " << word << endl;
+    cout << "The current high score is: " << endl;
+
+    highScoresDisplay.open("highscores.txt", ios::in);
+    if (highScoresDisplay.is_open()) 
+    {
+      while (getline(highScoresDisplay, displayStr))
+      {
+        cout << displayStr << endl;
+      }
+      highScores.close();
+    }
     sleep(10);
   }
 
   return 0;
+}
+
+
+string readLine(const string& filename, int N)
+{
+   std::ifstream in(filename.c_str());
+
+   std::string s;
+   //for performance
+   s.reserve(100);    
+
+   //skip N lines
+   for(int i = 0; i < N-1; ++i)
+       std::getline(in, s);
+
+   std::getline(in,s);
+   return s; 
 }
