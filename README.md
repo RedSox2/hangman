@@ -13,12 +13,13 @@ How to run
 3. Next open the windows search bar and search for "Edit environment variables for your account". Open what comes up.
 4. Click the `Path` variable under **account variables**. 
 5. Click `edit`.
-6. A new window should pop up. Choose `new`. Copy and paste this: `C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin`. 
+6. A new window should pop up. Choose `new`. Copy and paste this: `C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin`.
+7. Make sure to download the project (click the green code button and choose download ZIP)
 7. Your all good! Feel free to run your program whenever you feel. 
 
 ### Mac
 
-1. Download the zip.
+1. Download the zip. (click the green code button and choose download ZIP)
 2. Go to finder and `downloads`.
 3. Double click on the hangman-master folder.
 4. Press cmd+spacebar.
