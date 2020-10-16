@@ -70,7 +70,7 @@ int main()
    * clear screen an introduce game/rules
    * 
    */
-  system("cls");
+  // system("cls");
   cout << endl
        << endl
        << "WELCOME TO HANGMAN!!" << endl
@@ -125,7 +125,7 @@ int main()
       else
       {
         cout << flush;
-        system("cls");
+        // system("cls");
         cout << "That is not a letter, please try again" << endl
              << endl
              << endl;
@@ -136,7 +136,7 @@ int main()
     else if (guessed[guess - 'A'])
     {
       cout << flush;
-      system("cls");
+      // system("cls");
       cout << "You have already guessed this." << endl
            << endl
            << endl;
@@ -151,7 +151,7 @@ int main()
       // check if their letter is correct
       if (found != string::npos)        // if letter is correct
       {
-        system("cls");
+        // system("cls");
         cout << "Correct, \'" << guess << "\' is in the word." << endl
              << endl
              << endl
@@ -168,7 +168,7 @@ int main()
       else        // if it's incorrect
       {
         cout << flush;
-        system("cls");
+        // system("cls");
         cout << "Incorrect, \'" << guess << "\' is not in the word." << endl
              << endl
              << endl
@@ -184,7 +184,7 @@ int main()
   if (guessedWord == word)        // if they won
   {
     cout << flush;
-    system("cls");        // clear screen
+    // system("cls");        // clear screen
     cout << "YOU WIN!" << endl;
     cout << "The word was " << word << endl;
     cout << "You took " << incrtGuesses << " incorrect guesses." << endl;
@@ -196,7 +196,7 @@ int main()
   else        // if they lost
   {
     cout << flush;
-    system("cls");        // clear screen
+    // system("cls");        // clear screen
     cout << "YOU WERE HANGED!" << endl;
     cout << "The word was " << word << endl;
     displayHighScore();     // display the current high score
