@@ -28,7 +28,11 @@ int main()
   int n;
   int guesses = 15;
   int incrtGuesses = 0;
-  auto guessed = array<bool, 26>();
+  #ifdef _WIN32
+  array<bool, 26> guessed{};
+  #else
+  array<bool, 26> guessed;
+  #endif
   time_t myTime = time(0);
   char *dateTime = ctime(&myTime);
   ofstream highScores;
