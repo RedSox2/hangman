@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include <stdlib.h>
-#include <ctime.>
+#include <ctime>
 #include <set>
 #include <array>
 #include <unistd.h>
@@ -40,29 +40,6 @@ int main()
   string displayStr;
   ifstream highScoresDisplay;
 
-  // srand(time(NULL));
-  // cout << "What length would you like the word to be? ";
-  // cin >> length;
-  // switch (length)
-  // {
-  //   case 4:
-  //     wordPick = rand() % 26;
-  //     // word = fourLetter[wordPick];
-  //     break;
-  //   case 5:
-
-  //     break;
-  //   case 6:
-
-  //     break;
-  //   case 7:
-
-  //     break;
-  //   default:
-
-  //     break;
-
-  // }
   srand(time(NULL));
   wordPick = rand() % 15;
 
