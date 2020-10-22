@@ -28,7 +28,12 @@ int main()
   int n;
   int guesses = 15;
   int incrtGuesses = 0;
-  auto guessed = array<bool, 26>();
+  #ifdef _WIN32
+  array<bool, 26> guessed{};
+  #else
+  array<bool, 26> guessed;
+  #endif
+
   time_t myTime = time(0);
   char *dateTime = ctime(&myTime);
   ofstream highScores;
@@ -36,29 +41,6 @@ int main()
   string displayStr;
   ifstream highScoresDisplay;
 
-  // srand(time(NULL));
-  // cout << "What length would you like the word to be? ";
-  // cin >> length;
-  // switch (length)
-  // {
-  //   case 4:
-  //     wordPick = rand() % 26;
-  //     // word = fourLetter[wordPick];
-  //     break;
-  //   case 5:
-
-  //     break;
-  //   case 6:
-
-  //     break;
-  //   case 7:
-
-  //     break;
-  //   default:
-
-  //     break;
-
-  // }
   srand(time(NULL));
   wordPick = rand() % 15;
 
@@ -244,7 +226,8 @@ string readLine(const string& filename, int N)
 // display current high score
 void displayHighScore(void)
 {
-  ifstream highScoreDisplay("highscores.txt");
+  #ifdef _WIN32
+  ifstream highScoreDisplay("C:\\Downloads\\hangman-master\\highscores.txt");
   string displayStr;
   cout << endl
        << endl
@@ -258,6 +241,22 @@ void displayHighScore(void)
     getline(highScoreDisplay, displayStr);
     cout << "" << displayStr << "\n";
   }
+  #else
+  ifstream highScoreDisplay("\highscores.txt");
+  string displayStr;
+  cout << endl
+    << endl
+    << endl
+    << "The current high score is: " << endl
+    << endl
+    << endl;
+
+  while (!highScoreDisplay.eof())
+  {
+    getline(highScoreDisplay, displayStr);
+    cout << "" << displayStr << "\n";
+  }
+  #endif
 }
 
 // chech the current high score against n, and replace if necessary
@@ -267,7 +266,20 @@ void checkHighScore(int score)
   string urName;
   time_t myTime = time(0);
   char *dateTime = ctime(&myTime);
-
+  #ifdef _WIN32
+  if (score < stoi(readLine("C:\\downloads\\hangman-master\\highscores.txt", 4)))
+  {
+    cout << "Yay, You got a high score!" << endl;
+    cout << "Please enter your name here: ";
+    cin >> urName;
+    highScores.open("C:\\downloads\\hangman-master\\highscores.txt");
+    highScores << "By: " << urName << endl;
+    highScores << "Date: " << dateTime;
+    highScores << "Score: " << endl;
+    highScores << score;
+    highScores.close();
+  }
+  #else
   if (score < stoi(readLine("highscores.txt", 4)))
   {
     cout << "Yay, You got a high score!" << endl;
@@ -280,14 +292,18 @@ void checkHighScore(int score)
     highScores << score;
     highScores.close();
   }
+  #endif
 }
+
+
 
 void clearScreen(void)
 {
   #ifdef _WIN32
-    system("cls");
+  system("cls");
   #else
-    system("clear");
+  system("clear");
   #endif
+
 }
 
