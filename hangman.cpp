@@ -33,14 +33,7 @@ int main()
   #else
   array<bool, 26> guessed;
   #endif
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 45788458f18eb04630850d430850f6c5ec7eb584
->>>>>>> 52e780004c36eeb54260980e96209f7e1bd6f14e
   time_t myTime = time(0);
   char *dateTime = ctime(&myTime);
   ofstream highScores;
@@ -234,7 +227,8 @@ string readLine(const string& filename, int N)
 void displayHighScore(void)
 {
   #ifdef _WIN32
-  ifstream highScoreDisplay("C:\\Downloads\\hangman-master\\highscores.txt");
+  ifstream highScoreDisplay;
+  
   string displayStr;
   cout << endl
        << endl
@@ -242,28 +236,36 @@ void displayHighScore(void)
        << "The current high score is: " << endl
        << endl
        << endl;
-
-  while (!highScoreDisplay.eof())
+  highScoreDisplay.open(("C:\\Downloads\\hangman-master\\hangman-master\\highscores.txt"));
+  if (highScoreDisplay.is_open())
+  {
+    while (!highScoreDisplay.eof())
   {
     getline(highScoreDisplay, displayStr);
     cout << "" << displayStr << "\n";
   }
   #else
-  ifstream highScoreDisplay("\highscores.txt");
-  string displayStr;
-  cout << endl
-    << endl
-    << endl
-    << "The current high score is: " << endl
-    << endl
-    << endl;
-
-  while (!highScoreDisplay.eof())
+  highScoreDisplay.open("highscores.txt")
+  if (highScoreDisplay.is_open())
   {
-    getline(highScoreDisplay, displayStr);
-    cout << "" << displayStr << "\n";
+    string displayStr;
+    cout << endl
+      << endl
+      << endl
+      << "The current high score is: " << endl
+      << endl
+      << endl;
+
+    while (!highScoreDisplay.eof())
+    {
+      getline(highScoreDisplay, displayStr);
+      cout << "" << displayStr << "\n";
+    }
   }
+  
   #endif
+  }
+  
 }
 
 // chech the current high score against n, and replace if necessary
@@ -274,17 +276,25 @@ void checkHighScore(int score)
   time_t myTime = time(0);
   char *dateTime = ctime(&myTime);
   #ifdef _WIN32
-  if (score < stoi(readLine("C:\\downloads\\hangman-master\\highscores.txt", 4)))
+  if (score < stoi(readLine("C:\\downloads\\hangman-master\\hangman-master\\highscores.txt", 4)))
   {
     cout << "Yay, You got a high score!" << endl;
     cout << "Please enter your name here: ";
     cin >> urName;
-    highScores.open("C:\\downloads\\hangman-master\\highscores.txt");
-    highScores << "By: " << urName << endl;
-    highScores << "Date: " << dateTime;
-    highScores << "Score: " << endl;
-    highScores << score;
-    highScores.close();
+    highScores.open("C:\\downloads\\hangman-master\\hangman-master\\highscores.txt");
+    if(highScores.is_open()) 
+    {
+      highScores << "By: " << urName << endl;
+      highScores << "Date: " << dateTime;
+      highScores << "Score: " << endl;
+      highScores << score;
+      highScores.close();
+    } else
+    {
+      cout << "Unable to open highscores file. Sorry!" << endl;
+    }
+    
+    
   }
   #else
   if (score < stoi(readLine("highscores.txt", 4)))
