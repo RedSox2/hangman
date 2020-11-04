@@ -274,12 +274,12 @@ void checkHighScore(int score)
   time_t myTime = time(0);
   char *dateTime = ctime(&myTime);
   #ifdef _WIN32
-  if (score < stoi(readLine("C:\\downloads\\hangman-master\\highscores.txt", 4)))
+  if (score < stoi(readLine("C:\\downloads\\hangman-master\\hangman-master\\highscores.txt", 4)))
   {
     cout << "Yay, You got a high score!" << endl;
     cout << "Please enter your name here: ";
     cin >> urName;
-    highScores.open("C:\\downloads\\hangman-master\\highscores.txt");
+    highScores.open("C:\\downloads\\hangman-master\\hangman-master\\highscores.txt");
     highScores << "By: " << urName << endl;
     highScores << "Date: " << dateTime;
     highScores << "Score: " << endl;
