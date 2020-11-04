@@ -14,6 +14,7 @@ string readLine(const string &filename, int N);
 void displayHighScore(void);
 void checkHighScore(int n);
 void clearScreen(void);
+string urUsername;
 
 // MAIN Function
 int main()
@@ -47,52 +48,58 @@ int main()
   word = pickWords[wordPick];
   n = word.length();
   string guessedWord(n, 95);
-  cout << flush;
+  std::cout << flush;
   /*
    * Beginning of program
    * clear screen an introduce game/rules
    * 
    */
   clearScreen();
-  cout << endl
+  std::cout << endl
        << endl
        << "WELCOME TO HANGMAN!!" << endl
        << endl;
-  cout << endl
+  std::cout << endl
        << "----------------------------------------------------------------------------------------------------------" << endl
        << endl;
-  cout << "Here are the rules:\n* you must enter one letter\n* that letter cannot be a symbol\n* you have ten guesses\n* correct guesses won't count against you\n* you cannot guess the same letter twice\n* and finally, if you need to give up enter any numeral\n* P.S. lower scores are better since you score is equal to the number of incorrect guesses you got" << endl
+  std::cout << "Here are the rules:\n* you must enter one letter\n* that letter cannot be a symbol\n* you have ten guesses\n* correct guesses won't count against you\n* you cannot guess the same letter twice\n* and finally, if you need to give up enter any numeral\n* P.S. lower scores are better since you score is equal to the number of incorrect guesses you got" << endl
        << endl
        << endl
        << endl;
+  std::cout << "If you would like to display the highscore, we need your computer username. We assure you this is perfectly safe. If you are however suspicious, then you may enter 0 in which we will not dusplay the highscore." << endl;
+  std::cout << "What is your username? ";
+  std::cin >> urUsername;
   // show the current highscore
   displayHighScore();
+
+  
+  
   while (guessedWord != word && guesses > 0)
   {
     // print how many guesses you have left, the letter you have guessed so far, and what of the word you have guessed
-    cout << "You have " << guesses << " incorrect guesses left" << endl;
-    cout << "The word so far is\n\n";
+    std::cout << "You have " << guesses << " incorrect guesses left" << endl;
+    std::cout << "The word so far is\n\n";
     for (int i = 0; i < word.length(); i++)
     {
       if (i == word.length() - 1)
       {
-        cout << guessedWord[i] << endl;
+        std::cout << guessedWord[i] << endl;
       }
       else
       {
-        cout << guessedWord[i] << " ";
+        std::cout << guessedWord[i] << " ";
       }
     }
-    cout << "\n\nYou have guessed: ";
+    std::cout << "\n\nYou have guessed: ";
     for (int i = 0; i < guessed.size(); ++i)
     {
       if (guessed[i])
       {
-        cout << static_cast<char>(i + 'A') << ", ";
+        std::cout << static_cast<char>(i + 'A') << ", ";
       }
     }
     // get the user's guess
-    cout << "\nWhat is your guess?" << endl;
+    std::cout << "\nWhat is your guess?" << endl;
     cin >> myGuess;
     istringstream myGuess2(myGuess);
     char guess = toupper(myGuess2.peek());
@@ -107,9 +114,9 @@ int main()
       // did they enter a non-alphabetical character?
       else
       {
-        cout << flush;
+        std::cout << flush;
         clearScreen();
-        cout << "That is not a letter, please try again" << endl
+        std::cout << "That is not a letter, please try again" << endl
              << endl
              << endl;
         continue;
@@ -118,9 +125,9 @@ int main()
     // did they already guess this letter ?
     else if (guessed[guess - 'A'])
     {
-      cout << flush;
+      std::cout << flush;
       clearScreen();
-      cout << "You have already guessed this." << endl
+      std::cout << "You have already guessed this." << endl
            << endl
            << endl;
       continue;
@@ -135,7 +142,7 @@ int main()
       if (found != string::npos)        // if letter is correct
       {
         clearScreen();
-        cout << "Correct, \'" << guess << "\' is in the word." << endl
+        std::cout << "Correct, \'" << guess << "\' is in the word." << endl
              << endl
              << endl
              << flush;
@@ -150,9 +157,9 @@ int main()
       }
       else        // if it's incorrect
       {
-        cout << flush;
+        std::cout << flush;
         clearScreen();
-        cout << "Incorrect, \'" << guess << "\' is not in the word." << endl
+        std::cout << "Incorrect, \'" << guess << "\' is not in the word." << endl
              << endl
              << endl
              << flush;
@@ -166,11 +173,11 @@ int main()
   // check if they won or lost
   if (guessedWord == word)        // if they won
   {
-    cout << flush;
+    std::cout << flush;
     clearScreen();        // clear screen
-    cout << "YOU WIN!" << endl;
-    cout << "The word was " << word << endl;
-    cout << "You took " << incrtGuesses << " incorrect guesses." << endl;
+    std::cout << "YOU WIN!" << endl;
+    std::cout << "The word was " << word << endl;
+    std::cout << "You took " << incrtGuesses << " incorrect guesses." << endl;
     checkHighScore(incrtGuesses);       // check if they got a high score
     displayHighScore();       // display the current high score
 
@@ -178,10 +185,10 @@ int main()
   }
   else        // if they lost
   {
-    cout << flush;
+    std::cout << flush;
     clearScreen();        // clear screen
-    cout << "YOU WERE HANGED!" << endl;
-    cout << "The word was " << word << endl;
+    std::cout << "YOU WERE HANGED!" << endl;
+    std::cout << "The word was " << word << endl;
     displayHighScore();     // display the current high score
     sleep(10);        // wait ten seconds befpre closing the program
   }
@@ -230,26 +237,26 @@ void displayHighScore(void)
   ifstream highScoreDisplay;
   
   string displayStr;
-  cout << endl
+  std::cout << endl
        << endl
        << endl
        << "The current high score is: " << endl
        << endl
        << endl;
-  highScoreDisplay.open(("C:\\Downloads\\hangman-master\\hangman-master\\highscores.txt"));
+  highScoreDisplay.open(("C:\\Users\\" + urUsername + "\\downloads\\hangman-master\\hangman-master\\highscores.txt"));
   if (highScoreDisplay.is_open())
   {
     while (!highScoreDisplay.eof())
   {
     getline(highScoreDisplay, displayStr);
-    cout << "" << displayStr << "\n";
+    std::cout << "" << displayStr << "\n";
   }
   #else
   highScoreDisplay.open("highscores.txt")
   if (highScoreDisplay.is_open())
-  {z
+  {
     string displayStr;
-    cout << endl
+    std::cout << endl
       << endl
       << endl
       << "The current high score is: " << endl
@@ -259,7 +266,7 @@ void displayHighScore(void)
     while (!highScoreDisplay.eof())
     {
       getline(highScoreDisplay, displayStr);
-      cout << "" << displayStr << "\n";
+      std::cout << "" << displayStr << "\n";
     }
   }
   
@@ -276,12 +283,12 @@ void checkHighScore(int score)
   time_t myTime = time(0);
   char *dateTime = ctime(&myTime);
   #ifdef _WIN32
-  if (score < stoi(readLine("C:\\downloads\\hangman-master\\hangman-master\\highscores.txt", 4)))
+  if (score < stoi(readLine("C:\\Users\\" + urUsername + "\\downloads\\hangman-master\\hangman-master\\highscores.txt", 4)))
   {
-    cout << "Yay, You got a high score!" << endl;
-    cout << "Please enter your name here: ";
+    std::cout << "Yay, You got a high score!" << endl;
+    std::cout << "Please enter your name here: ";
     cin >> urName;
-    highScores.open("C:\\downloads\\hangman-master\\hangman-master\\highscores.txt");
+    highScores.open("C:\\Users\\" + urUsername + "\\downloads\\hangman-master\\hangman-master\\highscores.txt");
     if(highScores.is_open()) 
     {
       highScores << "By: " << urName << endl;
@@ -291,7 +298,7 @@ void checkHighScore(int score)
       highScores.close();
     } else
     {
-      cout << "Unable to open highscores file. Sorry!" << endl;
+      std::cout << "Unable to open highscores file. Sorry!" << endl;
     }
     
     
@@ -299,8 +306,8 @@ void checkHighScore(int score)
   #else
   if (score < stoi(readLine("highscores.txt", 4)))
   {
-    cout << "Yay, You got a high score!" << endl;
-    cout << "Please enter your name here: ";
+    std::cout << "Yay, You got a high score!" << endl;
+    std::cout << "Please enter your name here: ";
     cin >> urName;
     highScores.open("highscores.txt");
     highScores << "By: " << urName << endl;
