@@ -33,7 +33,14 @@ int main()
   #else
   array<bool, 26> guessed;
   #endif
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> 45788458f18eb04630850d430850f6c5ec7eb584
+>>>>>>> 52e780004c36eeb54260980e96209f7e1bd6f14e
   time_t myTime = time(0);
   char *dateTime = ctime(&myTime);
   ofstream highScores;
