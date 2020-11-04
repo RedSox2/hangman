@@ -8,14 +8,12 @@ How to run
 
 
 ### Windows
-1. Install [min-GW](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download).  
-2. Open the installer and continue through it but choose x86_64 for architecture.
-3. Next open the windows search bar and search for "Edit environment variables for your account". Open what comes up.
-4. Click the `Path` variable under **account variables**. 
-5. Click `edit`.
-6. A new window should pop up. Choose `new`. Copy and paste this: `C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin`.
-7. Make sure to download the project (click the green code button and choose download ZIP)
-7. Open File Explorer and go to downloads and the hangman-master folder. Extract it and then double click the .exe file (hangman.exe). Then it will start! 
+1. Download the zip by pressing the green code button and pressing download as zip
+1. Extract it
+1. Open the folder in file explorer
+1. Double click on `runWin.bat`
+1. If is doesn't work please post an issue on the github website!
+1. I would be happy to have you contribute!
 
 ### Mac
 
