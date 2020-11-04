@@ -234,7 +234,7 @@ string readLine(const string& filename, int N)
 void displayHighScore(void)
 {
   #ifdef _WIN32
-  ifstream highScoreDisplay("C:\\Downloads\\hangman-master\\highscores.txt");
+  ifstream highScoreDisplay("C:\\Downloads\\hangman-master\\hangman-master\\highscores.txt");
   string displayStr;
   cout << endl
        << endl
