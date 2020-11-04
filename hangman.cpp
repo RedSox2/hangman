@@ -227,7 +227,8 @@ string readLine(const string& filename, int N)
 void displayHighScore(void)
 {
   #ifdef _WIN32
-  ifstream highScoreDisplay("C:\\Downloads\\hangman-master\\hangman-master\\highscores.txt");
+  ifstream highScoreDisplay;
+  
   string displayStr;
   cout << endl
        << endl
@@ -235,28 +236,36 @@ void displayHighScore(void)
        << "The current high score is: " << endl
        << endl
        << endl;
-
-  while (!highScoreDisplay.eof())
+  highScoreDisplay.open(("C:\\Downloads\\hangman-master\\hangman-master\\highscores.txt"));
+  if (highScoreDisplay.is_open())
+  {
+    while (!highScoreDisplay.eof())
   {
     getline(highScoreDisplay, displayStr);
     cout << "" << displayStr << "\n";
   }
   #else
-  ifstream highScoreDisplay("\highscores.txt");
-  string displayStr;
-  cout << endl
-    << endl
-    << endl
-    << "The current high score is: " << endl
-    << endl
-    << endl;
+  highScoreDisplay.open("highscores.txt")
+  if (highScoreDisplay.is_open())
+  {z
+    string displayStr;
+    cout << endl
+      << endl
+      << endl
+      << "The current high score is: " << endl
+      << endl
+      << endl;
 
-  while (!highScoreDisplay.eof())
-  {
-    getline(highScoreDisplay, displayStr);
-    cout << "" << displayStr << "\n";
+    while (!highScoreDisplay.eof())
+    {
+      getline(highScoreDisplay, displayStr);
+      cout << "" << displayStr << "\n";
+    }
   }
+  
   #endif
+  }
+  
 }
 
 // chech the current high score against n, and replace if necessary
@@ -273,11 +282,19 @@ void checkHighScore(int score)
     cout << "Please enter your name here: ";
     cin >> urName;
     highScores.open("C:\\downloads\\hangman-master\\hangman-master\\highscores.txt");
-    highScores << "By: " << urName << endl;
-    highScores << "Date: " << dateTime;
-    highScores << "Score: " << endl;
-    highScores << score;
-    highScores.close();
+    if(highScores.is_open()) 
+    {
+      highScores << "By: " << urName << endl;
+      highScores << "Date: " << dateTime;
+      highScores << "Score: " << endl;
+      highScores << score;
+      highScores.close();
+    } else
+    {
+      cout << "Unable to open highscores file. Sorry!" << endl;
+    }
+    
+    
   }
   #else
   if (score < stoi(readLine("highscores.txt", 4)))
