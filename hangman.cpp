@@ -247,7 +247,7 @@ void displayHighScore(void)
   #else
   highScoreDisplay.open("highscores.txt")
   if (highScoreDisplay.is_open())
-  {
+  {z
     string displayStr;
     cout << endl
       << endl
