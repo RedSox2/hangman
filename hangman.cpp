@@ -15,6 +15,7 @@ void displayHighScore(void);
 void checkHighScore(int n);
 void clearScreen(void);
 string urUsername;
+char theUsername;
 
 // MAIN Function
 int main()
@@ -69,6 +70,12 @@ int main()
   std::cout << "If you would like to display the highscore, we need your computer username. We assure you this is perfectly safe. If you are however suspicious, then you may enter 0 in which we will not dusplay the highscore. Also please check your username, if you go to file explorer and 'This PC' then Users. Then take note of which one you are and then put it here." << endl;
   std::cout << "What is your username? ";
   std::cin >> urUsername;
+  istringstream myUsername(urUsername);
+  theUsername = myUsername.peek();
+  if (isdigit(theUsername))
+  {
+    cout << "Ok, no highscores then" << endl;
+  }
   // show the current highscore
   displayHighScore();
 
@@ -233,6 +240,14 @@ string readLine(const string& filename, int N)
 // display current high score
 void displayHighScore(void)
 {
+  if (isdigit(theUsername))
+  {
+    cout << "Highscores are disabled";
+  }
+  else
+  {
+
+  
   #ifdef _WIN32
   ifstream highScoreDisplay;
   
@@ -272,12 +287,22 @@ void displayHighScore(void)
   
   #endif
   }
+  }
   
 }
 
 // chech the current high score against n, and replace if necessary
 void checkHighScore(int score)
+
 {
+  if (isdigit(theUsername)) 
+  {
+    cout << "Highscores are disabled";
+  }
+  else
+  {
+  
+  
   ofstream highScores;
   string urName;
   time_t myTime = time(0);
@@ -317,6 +342,7 @@ void checkHighScore(int score)
     highScores.close();
   }
   #endif
+  }
 }
 
 
