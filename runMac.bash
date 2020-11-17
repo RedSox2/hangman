@@ -1,3 +1,7 @@
+
+echo "Getting everything ready"
+make hangman
+echo "##################################             This should be one line             ##################################"
 echo "Ready to start?"
 
 function pause(){
