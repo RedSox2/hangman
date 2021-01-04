@@ -6,10 +6,9 @@ A hangman game.
 How to run
 ---------------------
 
-
 ### Windows
 1. Download the zip by pressing the green code button and pressing download as zip
-1. Extract it
+1. Extract it into the program files folder of your PC located at `C:\Program Files`
 1. Open the folder in file explorer
 1. Double click on `runWin.bat`
 1. If is doesn't work please post an issue on the github website!
